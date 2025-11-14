@@ -1,0 +1,40 @@
+# Time Series Analysis Project Requirements
+
+# Core data science libraries
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+
+# Time series specific libraries
+prophet>=1.1.0
+statsmodels>=0.13.0
+pmdarima>=2.0.0
+
+# Deep learning
+torch>=1.12.0
+torchvision>=0.13.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Web interface
+streamlit>=1.20.0
+
+# Configuration and utilities
+pyyaml>=6.0
+pathlib2>=2.3.0
+
+# Development and testing
+pytest>=7.0.0
+pytest-cov>=3.0.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.950
+
+# Optional: Additional time series libraries
+# darts>=0.20.0
+# sktime>=0.15.0
+# tslearn>=0.5.0

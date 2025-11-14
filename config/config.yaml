@@ -1,0 +1,74 @@
+# Configuration file for Time Series Analysis Project
+data:
+  synthetic:
+    periods: 1000
+    trend_start: 10
+    trend_end: 50
+    seasonal_amplitude: 5
+    noise_std: 2.0
+    seed: 42
+  
+  external:
+    enable_download: false
+    datasets:
+      - name: "energy"
+        url: "https://raw.githubusercontent.com/jbrownlee/Datasets/master/daily-total-female-births.csv"
+      - name: "traffic"
+        url: "https://raw.githubusercontent.com/jbrownlee/Datasets/master/daily-minimum-temperatures.csv"
+
+models:
+  prophet:
+    enable: true
+    params:
+      changepoint_prior_scale: 0.05
+      seasonality_prior_scale: 10.0
+      holidays_prior_scale: 10.0
+      seasonality_mode: "additive"
+  
+  arima:
+    enable: true
+    params:
+      order: [1, 1, 1]
+      seasonal_order: [1, 1, 1, 12]
+      auto_arima: true
+  
+  lstm:
+    enable: true
+    params:
+      sequence_length: 60
+      hidden_units: 50
+      epochs: 100
+      batch_size: 32
+      dropout: 0.2
+  
+  anomaly_detection:
+    isolation_forest:
+      enable: true
+      contamination: 0.1
+    autoencoder:
+      enable: true
+      encoding_dim: 32
+      epochs: 50
+
+forecasting:
+  horizon: 30
+  confidence_intervals: [0.8, 0.95]
+  cross_validation:
+    enable: true
+    initial: 365
+    period: 30
+    horizon: 30
+
+visualization:
+  plot_style: "seaborn-v0_8"
+  figure_size: [12, 8]
+  dpi: 100
+  colors:
+    primary: "#1f77b4"
+    secondary: "#ff7f0e"
+    anomaly: "#d62728"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/timeseries.log"
